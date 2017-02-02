@@ -1,0 +1,138 @@
+
+
+class nBodyProblem {
+
+  constructor( parameters ) {
+
+    this.g = parameters.g;
+    this.law = parameters.law;
+    this.dt = parameters.dt;
+    this.masses = parameters.masses;
+
+    this.systemMass = 0;
+
+    this.x = 0;
+    this.y = 0;
+    this.z = 0;
+
+    this.calculateSystemMass().calculateMuForAllMasses().leapfrog();
+
+  }
+
+  calculateSystemMass() {
+
+    var massesLength = this.masses.length;
+
+    for (let i = 0; i < massesLength; i++) this.systemMass += this.masses[ i ].m;
+
+    return this;
+  }
+
+  calculateMuForAllMasses() {
+
+    var massesLength = this.masses.length;
+
+    for (let i = 0; i < massesLength; i++) this.masses[ i ].mu = this.g * this.masses[ i ].m;
+
+    return this;
+  }
+
+  leapfrog() {
+
+    this.dt *= 0.5;
+    this.updateVelocityVectors();
+    this.dt *= 2.0;
+
+    return this;
+  }
+
+  updatePositionVectors() {
+
+    var massesLength = this.masses.length;
+
+    for (let i = 0; i < massesLength; i++) {
+
+      let mass_i = this.masses[ i ];
+
+      mass_i.x += mass_i.vx * this.dt;
+      mass_i.y += mass_i.vy * this.dt;
+      mass_i.z += mass_i.vz * this.dt;
+
+    }
+
+    return this;
+  }
+
+  updateVelocityVectors() {
+
+    var massesLength = this.masses.length;
+
+    for (let i = 0; i < massesLength; i++) {
+
+      let ax = 0;
+      let ay = 0;
+      let az = 0;
+
+      let mass_i = this.masses[ i ];
+
+      for (let j = 0; j < massesLength; j++) {
+
+        if ( i !== j ) {
+
+          let mass_j = this.masses[ j ];
+
+          let dx = mass_j.x - mass_i.x;
+          let dy = mass_j.y - mass_i.y;
+          let dz = mass_j.z - mass_i.z;
+
+          let distsq = dx * dx + dy * dy + dz * dz;
+
+          let fact = mass_j.mu / Math.pow( distsq, this.law );
+
+          ax += dx * fact;
+          ay += dy * fact;
+          az += dz * fact;
+
+        }
+
+      }
+
+      mass_i.vx += ax * this.dt;
+      mass_i.vy += ay * this.dt;
+      mass_i.vz += az * this.dt;
+
+    }
+
+    return this;
+  }
+
+  updateBarycenter() {
+
+    var massesLength = this.masses.length;
+    var systemMass = this.systemMass;
+
+    var x = 0;
+    var y = 0;
+    var z = 0;
+
+    for (let i = 0; i < massesLength; i++) {
+
+      let mass_i = this.masses[ i ];
+      let m = mass_i.m;
+
+      x += mass_i.x * m;
+      y += mass_i.y * m;
+      z += mass_i.z * m;
+
+    }
+
+    this.x = x / systemMass;
+    this.y = y / systemMass;
+    this.z = z / systemMass;
+
+    return this;
+  }
+
+}
+
+export default nBodyProblem;

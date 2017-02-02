@@ -1,0 +1,230 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+  background-image: url(https://www.spacetelescope.org/static/archives/fitsimages/original/danny_lacrue_6.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: fixed;
+  overflow: hidden;
+  font-family: tahoma, arial, sans;
+  color: #fff;
+}
+
+.inputsWrapper {
+  width: 100%;
+}
+
+.inputs {
+  width: 60%;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid #d8d8d8;
+  padding: 25px;
+}
+
+.pageTitle {
+  font-family: 'Days One', sans-serif;
+  text-align: center;
+}
+
+.scenariosList {
+  padding: 5px;
+  width: 100%;
+  display: block;
+  background-color: #000;
+  color: inherit;
+  margin-bottom: 10px;
+}
+
+.scenarioInfo {
+  width: 100%;
+  padding: 10px;
+  background-color: #000;
+  border: 1px solid #d8d8d8;
+  color: #fff;
+  height: 40vh;
+  margin-bottom: 10px;
+}
+
+.scenarioInfoImg {
+  width: 15%;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+}
+
+.scenarioInfoText {
+  width: 55%;
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translateY(-50%);
+  display: inline-block;
+}
+
+.button {
+  width: 100%;
+  padding: 8px;
+  background-color: #000;
+  border: 1px solid #d8d8d8;
+  font-family: 'Days One', sans-serif;
+  color: inherit;
+}
+
+.modifyScenarioWrapper {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.modifyScenarioHeader {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.7);  
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.close {
+  float: right;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  text-align: center;
+  border: 3px solid #d8d8d8;
+}
+
+.smallScenarioImg {
+  width: 4%;
+  display: inline-block;
+}
+
+.scenarioTitle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-block;
+  font-family: 'Days One', sans-serif;
+  font-size: 14px;
+}
+
+.massMap {
+  background-image: url(https://www.wpclipart.com/space/stars_universe/starfield_wallpaper.jpg);
+}
+
+.addMassWrapper {
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  z-index: 3;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  border-top: 1px solid #d8d8d8;
+  font-size: 12px;
+}
+
+.addMassForm {
+  width: inherit;
+}
+
+.addMassTable {
+  width: inherit;
+  margin-bottom: 15px;
+}
+
+.addMassTable td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.addMassTable input, select {
+  width: 100%;
+  background-color: #000;
+  border: 1px solid #d8d8d8;
+  color: inherit;
+}
+
+.addMassTable input[type=range]
+{
+    -webkit-appearance: none;
+    width: 100%;
+    background-color: #808080;
+    padding: 2px;
+}
+
+.addMassTable input[type="range"]::-webkit-slider-thumb
+{
+    -webkit-appearance: none;
+    background-color: #000;
+    border: 1px solid #888;
+    opacity: 1.0;
+    width: 7px;
+    height: 7px;
+    border-radius: 7px;
+}
+
+.addMassTable input[type=range]:focus
+{
+    outline:none;
+}
+
+.addMassTable .sliderVal {
+  position: absolute;
+  display: inline-block;
+  width: 30%;
+  margin-left: 10%;
+  overflow: hidden;
+}
+
+.cameraControls {
+  position: absolute;
+  z-index: 3;
+  top: 5px;
+  left: 5px;
+}
+
+.viewOrbits {
+  position: absolute;
+  width: 20%;
+  z-index: 3;
+  bottom: 5px;
+  left: 23%;
+}
+
+.view3D {
+  position: absolute;
+  width: 20%;
+  z-index: 3;
+  bottom: 5px;
+  left: 43%;
+}
+
+.reset {
+  position: absolute;
+  width: 20%;
+  z-index: 3;
+  bottom: 5px;
+  left: 5px;
+}
