@@ -1,7 +1,15 @@
 import React from 'react';
 import scene from '../3d/scene';
+import '../css/SceneWrapper.css';
 
 class SceneWrapper extends React.Component {
+
+  static propTypes = {
+
+    scenario: React.PropTypes.object.isRequired,
+    reset: React.PropTypes.func.isRequired
+
+  }
 
   componentDidMount() {
 
@@ -25,18 +33,20 @@ class SceneWrapper extends React.Component {
 
       <div className="cameraControls">
 
-        <label className="simulationControl cameraPositionLabel">Camera Position</label>
-        <select ref={ (el) => this._camPos = el } className="camPos">{ this.props.scenario.masses.map( (mass) => <option value={ mass.name }> { mass.name } </option> ) }</select>
+        <label className="cameraLabel">Camera Position</label>
+        <select ref={ (el) => this._camPos = el } className="input camPosList">
+          <option value="free">Free (Pan, zoom and orbit)</option>
+          { this.props.scenario.masses.map( (mass) => <option value={ mass.name }> { mass.name } </option> ) }</select>
 
-        <label className="simulationControl cameraFocusLabel">Camera Focus</label>
-        <select ref={ (el) => this._camFocus = el } className="camFocus">{ this.props.scenario.masses.map( (mass) => <option value={ mass.name }> { mass.name } </option> ) }</select>
+        <label className="cameraLabel">Camera Focus</label>
+        <select ref={ (el) => this._camFocus = el } className="input camFocusList">{ this.props.scenario.masses.map( (mass) => <option value={ mass.name }> { mass.name } </option> ) }</select>
 
       </div>
 
-      <button ref={ (el) => this._viewOrbits = el } className="button viewOrbits">View Orbits</button>
-      <button ref={ (el) => this._view3D = el } className="button view3D">View 3D</button>
+      <button ref={ (el) => this._viewOrbits = el } className="input viewOrbitsButton">View Orbits</button>
+      <button ref={ (el) => this._view3D = el } className="input view3DButton">View 3D</button>
 
-      <button onClick={ this.props.reset } className="button reset">Reset</button>
+      <button onClick={ this.props.reset } className="input resetButton">Reset</button>
 
     </div>
 
@@ -45,10 +55,5 @@ class SceneWrapper extends React.Component {
   }
 
 }
-
-SceneWrapper.propTypes = {
-  scenario: React.PropTypes.object.isRequired,
-  reset: React.PropTypes.func.isRequired
-};
 
 export default SceneWrapper;

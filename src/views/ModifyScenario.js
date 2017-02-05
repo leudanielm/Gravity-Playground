@@ -1,8 +1,20 @@
 import React from 'react';
 import MassMap from './MassMap';
 import Slider from './Slider';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import '../css/ModifyScenario.css';
 
 class ModifyScenario extends React.Component {
+
+  static propTypes = {
+
+    scenario: React.PropTypes.object.isRequired,
+    addBody: React.PropTypes.func.isRequired,
+    masses: React.PropTypes.array.isRequired,
+    colors: React.PropTypes.array.isRequired,
+    hideModifyScenario: React.PropTypes.func.isRequired
+
+  }
 
   render() {
 
@@ -26,9 +38,9 @@ class ModifyScenario extends React.Component {
               <th>Color</th>
             </tr>
             <tr>
-              <td><input required={ true } name="name" /></td>
-              <td><select name="m">{ this.props.masses.map( (mass) => <option value={ mass.m }>{ mass.name }</option> ) }</select></td>
-              <td><select name="color">{ this.props.colors.map( (color) => <option value={ color }>{ color }</option> ) }</select></td>
+              <td><input required={ true } name="name" className="input" /></td>
+              <td><select name="m" className="input">{ this.props.masses.map( (mass) => <option value={ mass.m }>{ mass.name }</option> ) }</select></td>
+              <td><select name="color" className="input">{ this.props.colors.map( (color) => <option value={ color }>{ color }</option> ) }</select></td>
             </tr>
 
             <tr>
@@ -45,7 +57,7 @@ class ModifyScenario extends React.Component {
 
           </table>
 
-          <input type="submit" value="Add Mass" className="button" />
+          <input type="submit" value="Add Mass" className="input" />
 
         </form>
 
@@ -67,13 +79,5 @@ class ModifyScenario extends React.Component {
   }
 
 }
-
-ModifyScenario.propTypes = {
-  scenario: React.PropTypes.object.isRequired,
-  addBody: React.PropTypes.func.isRequired,
-  masses: React.PropTypes.array.isRequired,
-  colors: React.PropTypes.array.isRequired,
-  hideModifyScenario: React.PropTypes.func.isRequired
-};
 
 export default ModifyScenario;

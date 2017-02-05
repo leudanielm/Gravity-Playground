@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/Slider.css';
 
 class Slider extends React.Component {
 
@@ -9,6 +10,16 @@ class Slider extends React.Component {
     this.state = {
       val: 0
     };
+
+  }
+
+  static propTypes = {
+
+    label: React.PropTypes.string.isRequired,
+    name: React.PropTypes.string.isRequired,
+    max: React.PropTypes.number.isRequired,
+    min: React.PropTypes.number.isRequired,
+    step: React.PropTypes.number.isRequired
 
   }
 
@@ -24,13 +35,13 @@ class Slider extends React.Component {
 
     return (
 
-    <div className="slider">
+    <div>
 
-      <label>{ this.props.label }</label>
+      <label className="sliderLabel">{ this.props.label }</label>
 
-      <div className="sliderVal">{ this.state.val }</div>
+      <div className="sliderValue">{ this.state.val }</div>
 
-      <input type="range" name={ this.props.name } max={ this.props.max } min={ this.props.min } step={ this.props.step } required={ true } onInput={ this.updateVal } />
+      <input className="slider" type="range" name={ this.props.name } max={ this.props.max } min={ this.props.min } step={ this.props.step } required={ true } onInput={ this.updateVal } />
 
     </div>
 
@@ -39,13 +50,5 @@ class Slider extends React.Component {
   }
 
 }
-
-Slider.propTypes = {
-  label: React.PropTypes.string.isRequired,
-  name: React.PropTypes.string.isRequired,
-  max: React.PropTypes.number.isRequired,
-  min: React.PropTypes.number.isRequired,
-  step: React.PropTypes.number.isRequired
-};
 
 export default Slider;

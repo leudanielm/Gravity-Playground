@@ -1,0 +1,27 @@
+
+.cameraControls {
+  position: absolute;
+  z-index: 3;
+  top: 5px;
+  left: 5px;
+}
+
+.cameraLabel {
+  margin-left: 15px;
+  margin-right: 5px;
+}
+
+.viewOrbitsButton, .view3DButton, .resetButton {
+  position: absolute;
+  z-index: 3;
+  right: 15px;
+  width: 10%;
+}
+
+.viewOrbitsButton, .view3DButton {
+  top: 30vh;
+}
+
+.resetButton {
+  top: 38vh;
+}

@@ -1,0 +1,35 @@
+input.slider[type="range"]
+{
+    -webkit-appearance: none;
+    width: 100%;
+    background-color: #808080;
+    padding: 2px;
+}
+
+input.slider[type="range"]::-webkit-slider-thumb
+{
+    -webkit-appearance: none;
+    background-color: #000;
+    border: 1px solid #888;
+    width: 7px;
+    height: 7px;
+    border-radius: 7px;
+}
+
+input.slider[type="range"]:focus
+{
+    outline:none;
+}
+
+.sliderLabel {
+  width: 15%;
+  display: inline-block;
+}
+
+.sliderVal {
+  position: absolute;
+  display: inline-block;
+  width: 30%;
+  margin-left: 35%;
+  overflow: hidden;
+}

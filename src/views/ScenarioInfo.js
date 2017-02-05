@@ -1,4 +1,5 @@
 import React from 'react';
+import '../css/ScenarioInfo.css';
 
 const ScenarioInfo = ( props ) => <div className="scenarioInfo">
                                     <img src={ props.scenario.image } className="scenarioInfoImg" />

@@ -17,6 +17,14 @@ class SimulatorContainer extends React.Component {
 
   }
 
+  static propTypes = {
+
+    scenarios: React.PropTypes.object.isRequired,
+    colors: React.PropTypes.array.isRequired,
+    masses: React.PropTypes.array.isRequired
+
+  }
+
   updateScenario = ( e ) => {
 
     this.setState( {
@@ -53,7 +61,8 @@ class SimulatorContainer extends React.Component {
     const keys = form.keys();
 
     const body = {
-      type: 'custom'
+      type: 'custom',
+      radius: 1
     };
 
     let key;
@@ -69,6 +78,8 @@ class SimulatorContainer extends React.Component {
     //Reset the form
 
     e.target.reset();
+
+    //Update scenario state
 
     const newScenario = this.state.scenario;
     newScenario.masses.push( body );
@@ -90,7 +101,8 @@ class SimulatorContainer extends React.Component {
   reset = () => {
 
     this.setState( {
-      running: false
+      running: false,
+      scenario: this.props.scenarios[ 'The Earth and Moon System' ]
     } );
 
   }
@@ -109,11 +121,5 @@ class SimulatorContainer extends React.Component {
   }
 
 }
-
-SimulatorContainer.propTypes = {
-  scenarios: React.PropTypes.object.isRequired,
-  colors: React.PropTypes.array.isRequired,
-  masses: React.PropTypes.array.isRequired
-};
 
 export default SimulatorContainer;

@@ -1,6 +1,14 @@
 import React from 'react';
+import '../css/MassMap.css';
 
 class MassMap extends React.Component {
+
+  static propTypes = {
+
+    scenario: React.PropTypes.object.isRequired,
+    masses:  React.PropTypes.array.isRequired
+
+  }
 
   renderMap() {
 
@@ -54,10 +62,5 @@ class MassMap extends React.Component {
   }
 
 }
-
-MassMap.propTypes = {
-  scenario: React.PropTypes.object.isRequired,
-  masses:  React.PropTypes.array.isRequired
-};
 
 export default MassMap;
