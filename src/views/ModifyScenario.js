@@ -20,13 +20,13 @@ class ModifyScenario extends React.Component {
 
     return (
 
-    <div className="modifyScenarioWrapper">
+    <div className="modifyScenarioWrapper easeIn">
 
       <MassMap masses={ this.props.scenario.masses } scale={ this.props.scenario.scale } />
 
       <div className="addMassWrapper">
 
-        <h4>Add Mass</h4>
+        <h2 className="addMassTitle">Add Mass</h2>
 
         <form onSubmit={ this.props.addBody } className="addMassForm">
 
@@ -57,7 +57,7 @@ class ModifyScenario extends React.Component {
 
           </table>
 
-          <input type="submit" value="Add Mass" className="input" />
+          <input type="submit" value="Add Mass" className="input addMassButton" />
 
         </form>
 

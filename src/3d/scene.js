@@ -1,8 +1,10 @@
 import * as THREE from 'three';
-import OrbitControls from './OrbitControlsES6';
+import OrbitControls from '../vendor/OrbitControlsES6';
 import nBodyProblem from '../algorithms/nBodyProblem';
 
 const scene = ( function () {
+
+  //Full screen action
 
   let w = window.innerWidth;
   let h = window.innerHeight;

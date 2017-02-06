@@ -4,20 +4,28 @@ class nBodyProblem {
 
   constructor( parameters ) {
 
-    this.g = parameters.g;
-    this.law = parameters.law;
-    this.dt = parameters.dt;
-    this.masses = parameters.masses;
+    //Remember to be consistent in your use of units!!! 
+
+    this.g = parameters.g; //Gravitational constant
+    this.law = parameters.law; //Gravitational force law
+    this.dt = parameters.dt; //Time step
+    this.masses = parameters.masses; //Masses to be simulated
 
     this.systemMass = 0;
+
+    //Barycenter position
 
     this.x = 0;
     this.y = 0;
     this.z = 0;
 
+    //Fire init methods
+
     this.calculateSystemMass().calculateMuForAllMasses().leapfrog();
 
   }
+
+  //To calculate the position of the barycenter we first need to know the total mass of the whole system being simulated
 
   calculateSystemMass() {
 
@@ -28,6 +36,8 @@ class nBodyProblem {
     return this;
   }
 
+  //We only need big G to calculate gravity so to improve performance, calculate big G before the simulation commences
+
   calculateMuForAllMasses() {
 
     var massesLength = this.masses.length;
@@ -36,6 +46,8 @@ class nBodyProblem {
 
     return this;
   }
+
+  //Allows for a higher time step
 
   leapfrog() {
 
@@ -61,6 +73,7 @@ class nBodyProblem {
     }
 
     return this;
+
   }
 
   updateVelocityVectors() {
@@ -76,6 +89,8 @@ class nBodyProblem {
       let mass_i = this.masses[ i ];
 
       for (let j = 0; j < massesLength; j++) {
+
+	//Don't calculate self-gravity or the system will go poooooooooof
 
         if ( i !== j ) {
 
@@ -104,6 +119,7 @@ class nBodyProblem {
     }
 
     return this;
+
   }
 
   updateBarycenter() {
@@ -131,6 +147,7 @@ class nBodyProblem {
     this.z = z / systemMass;
 
     return this;
+
   }
 
 }

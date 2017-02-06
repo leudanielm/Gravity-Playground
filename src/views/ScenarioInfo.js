@@ -1,13 +1,30 @@
 import React from 'react';
 import '../css/ScenarioInfo.css';
 
-const ScenarioInfo = ( props ) => <div className="scenarioInfo">
-                                    <img src={ props.scenario.image } className="scenarioInfoImg" />
-				    <p className="scenarioInfoText">{ props.scenario.info }</p>
-				  </div>;
+class ScenarioInfo extends React.Component {
 
-ScenarioInfo.propTypes = {
-  scenario: React.PropTypes.object.isRequired
-};
+  static propTypes = {
+
+    scenario: React.PropTypes.object.isRequired
+
+  }
+
+  render() {
+
+    return (
+
+    <div className="scenarioInfo">
+
+      <img src={ this.props.scenario.image } className="scenarioInfoImg" />
+
+      <p className="scenarioInfoText">{ this.props.scenario.info }</p>
+
+    </div>
+
+    );
+
+  }
+
+}
 
 export default ScenarioInfo;

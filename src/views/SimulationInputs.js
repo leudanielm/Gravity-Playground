@@ -1,5 +1,5 @@
 import React from 'react';
-import ScenarioInfo from './ScenarioInfo';
+import MainMenu from './MainMenu';
 import ModifyScenario from './ModifyScenario';
 import '../css/SimulationInputs.css';
 
@@ -22,24 +22,16 @@ class SimulationInputs extends React.Component {
 
     return (
 
-    <div className="inputsWrapper">
+    <div>
 
-      <div className="inputs">
+      <div className="stars"></div>
+      <div className="twinkling"></div>
 
-        <h1 className="pageTitle">Gravity Playground</h1>
+      <div className="inputsWrapper">
 
-        <label>Select a scenario</label>
-        <select onChange={ this.props.updateScenario } className="input scenariosList">{ this.props.scenarios.map( (scenario) => <option value={ scenario }> { scenario } </option> ) }</select>
-
-        <ScenarioInfo scenario={ this.props.scenario } />
-
-        <button onClick={ this.props.showModifyScenario } className="input modifyScenarioButton">Modify Scenario</button>
-
-        <button onClick={ this.props.start } className="input startButton">Start Simulation</button>
+       { this.props.modifyScenario === false ? <MainMenu updateScenario={ this.props.updateScenario } scenarios={ this.props.scenarios } scenario={ this.props.scenario } showModifyScenario={ this.props.showModifyScenario } start={ this.props.start } /> : <ModifyScenario scenario={ this.props.scenario } addBody={ this.props.addBody } masses={ this.props.masses } colors={ this.props.colors } hideModifyScenario={ this.props.hideModifyScenario } /> }
 
       </div>
-
-      { this.props.modifyScenario === true && <ModifyScenario scenario={ this.props.scenario } addBody={ this.props.addBody } masses={ this.props.masses } colors={ this.props.colors } hideModifyScenario={ this.props.hideModifyScenario } /> }
 
     </div>
 

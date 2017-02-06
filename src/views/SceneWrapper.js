@@ -27,7 +27,7 @@ class SceneWrapper extends React.Component {
 
     return (
 
-    <div>
+    <div className="easeIn">
 
       <div ref={ (el) => this._webGL = el }></div>
 

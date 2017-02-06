@@ -5,7 +5,7 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .modifyScenarioHeader, .addMassWrapper {
@@ -25,6 +25,10 @@
   bottom: 0;
   border-top: 1px solid #d8d8d8;
   padding: 10px;
+}
+
+.addMassTitle {
+  text-align: left;
 }
 
 .smallScenarioImg, .scenarioTitle, .close {
@@ -56,6 +60,11 @@
 
 .addMassTable {
   width: 100%;
+  margin-top: 8px;
+}
+
+.addMassTable input, select {
+  width: 100%;
 }
 
 .addMassTable th {
@@ -63,6 +72,15 @@
   font-weight: normal;
 }
 
+.addMassTable td {
+  padding: 3px;
+}
+
 .addMassForm {
   width: inherit;
+}
+
+.addMassButton {
+  width: 100%;
+  margin-top: 5px;
 }
