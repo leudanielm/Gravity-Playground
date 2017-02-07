@@ -26,6 +26,7 @@ class SimulationInputs extends React.Component {
 
       <div className="stars"></div>
       <div className="twinkling"></div>
+      <div className="trees"></div>
 
       <div className="inputsWrapper">
 

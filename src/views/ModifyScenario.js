@@ -1,7 +1,6 @@
 import React from 'react';
 import MassMap from './MassMap';
 import Slider from './Slider';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import '../css/ModifyScenario.css';
 
 class ModifyScenario extends React.Component {

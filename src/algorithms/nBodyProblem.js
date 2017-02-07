@@ -29,18 +29,19 @@ class nBodyProblem {
 
   calculateSystemMass() {
 
-    var massesLength = this.masses.length;
+    let massesLength = this.masses.length;
 
     for (let i = 0; i < massesLength; i++) this.systemMass += this.masses[ i ].m;
 
     return this;
+
   }
 
   //We only need big G to calculate gravity so to improve performance, calculate big G before the simulation commences
 
   calculateMuForAllMasses() {
 
-    var massesLength = this.masses.length;
+    let massesLength = this.masses.length;
 
     for (let i = 0; i < massesLength; i++) this.masses[ i ].mu = this.g * this.masses[ i ].m;
 
@@ -60,7 +61,7 @@ class nBodyProblem {
 
   updatePositionVectors() {
 
-    var massesLength = this.masses.length;
+    let massesLength = this.masses.length;
 
     for (let i = 0; i < massesLength; i++) {
 
@@ -78,7 +79,7 @@ class nBodyProblem {
 
   updateVelocityVectors() {
 
-    var massesLength = this.masses.length;
+    let massesLength = this.masses.length;
 
     for (let i = 0; i < massesLength; i++) {
 
@@ -124,12 +125,12 @@ class nBodyProblem {
 
   updateBarycenter() {
 
-    var massesLength = this.masses.length;
-    var systemMass = this.systemMass;
+    let massesLength = this.masses.length;
+    let systemMass = this.systemMass;
 
-    var x = 0;
-    var y = 0;
-    var z = 0;
+    let x = 0;
+    let y = 0;
+    let z = 0;
 
     for (let i = 0; i < massesLength; i++) {
 

@@ -34,12 +34,10 @@ class SceneWrapper extends React.Component {
       <div className="cameraControls">
 
         <label className="cameraLabel">Camera Position</label>
-        <select ref={ (el) => this._camPos = el } className="input camPosList">
-          <option value="free">Free (Pan, zoom and orbit)</option>
-          { this.props.scenario.masses.map( (mass) => <option value={ mass.name }> { mass.name } </option> ) }</select>
+        <select ref={ (el) => this._camPos = el } className="input camList"><option value="free">Free (Pan, zoom and orbit)</option>{ this.props.scenario.masses.map( (mass) => <option value={ mass.name }> { mass.name } </option> ) }</select>
 
         <label className="cameraLabel">Camera Focus</label>
-        <select ref={ (el) => this._camFocus = el } className="input camFocusList">{ this.props.scenario.masses.map( (mass) => <option value={ mass.name }> { mass.name } </option> ) }</select>
+        <select ref={ (el) => this._camFocus = el } className="input camList">{ this.props.scenario.masses.map( (mass) => <option value={ mass.name }> { mass.name } </option> ) }</select>
 
       </div>
 

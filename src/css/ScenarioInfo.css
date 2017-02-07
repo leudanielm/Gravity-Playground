@@ -1,26 +1,26 @@
 
 .scenarioInfo {
-  width: 100%;
-  padding: 10px;
-  background-color: #000;
-  border: 1px solid #d8d8d8;
-  color: #fff;
-  height: 40vh;
-  margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    border: 1px solid #d8d8d8;
+    color: #fff;
+    height: 40vh;
+    margin-bottom: 10px;
 }
 
 .scenarioInfoImg, .scenarioInfoText {
-  display: inline-block;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .scenarioInfoImg {
-  width: 15%;
+    width: 15%;
 }
 
 .scenarioInfoText {
-  width: 55%;
-  left: 25%;
+    width: 55%;
+    left: 25%;
 }

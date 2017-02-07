@@ -162,8 +162,8 @@ const scenarios = {
       radius: 2
     }]
   },
-  "New Horizons": {
-    name: "New Horizons",
+  "New Horizons Jupiter Gravity Assist": {
+    name: "New Horizons Jupiter Gravity Assist",
     image: "scenarios/nh.jpg",
     info: "Simulation of the New Horizon spacecraft's gravity assist by Jupiter and subsequent flyby of Pluto.",
     g: 39.5,

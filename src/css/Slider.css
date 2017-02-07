@@ -19,13 +19,13 @@ input.slider[type="range"]:focus {
 }
 
 .sliderLabel {
-  width: 50%;
-  float: left;
+    width: 50%;
+    float: left;
 }
 
 .sliderVal {
-  position: absolute;
-  float: left;
-  width: 30%;
-  overflow: hidden;
+    position: absolute;
+    float: left;
+    width: 30%;
+    overflow: hidden;
 }

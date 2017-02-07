@@ -24,9 +24,7 @@ button.input {
 
 .easeIn {
     animation: easein 2s;
-    -moz-animation: easein 2s; 
     -webkit-animation: easein 2s; 
-    -o-animation: easein 2s; 
 }
 
 @keyframes easein {
@@ -37,14 +35,7 @@ button.input {
         opacity:1;
     }
 }
-@-moz-keyframes easein { 
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
-}
+
 @-webkit-keyframes easein { 
     from {
         opacity:0;
@@ -53,12 +44,5 @@ button.input {
         opacity:1;
     }
 }
-@-o-keyframes easein { 
-    from {
-        opacity:0;
-    }
-    to {
-        opacity: 1;
-    }
-}
+
 

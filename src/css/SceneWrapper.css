@@ -1,27 +1,35 @@
 
 .cameraControls {
-  position: absolute;
-  z-index: 3;
-  top: 5px;
-  left: 5px;
+    width: 100%;
+    position: absolute;
+    z-index: 3;
+    top: 5px;
+    left: 5px;
 }
 
 .cameraLabel {
-  margin-left: 15px;
-  margin-right: 5px;
+    margin-left: 15px;
+    margin-right: 5px;
+    float: left;
+}
+
+.camList {
+    width: 25%;
+    float: left;
+    padding: 0;
 }
 
 .viewOrbitsButton, .view3DButton, .resetButton {
-  position: absolute;
-  z-index: 3;
-  right: 15px;
-  width: 10%;
+    position: absolute;
+    z-index: 3;
+    right: 15px;
+    width: 10%;
 }
 
 .viewOrbitsButton, .view3DButton {
-  top: 30vh;
+    top: 30vh;
 }
 
 .resetButton {
-  top: 38vh;
+    top: 38vh;
 }
