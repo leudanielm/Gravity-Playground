@@ -22,6 +22,10 @@ Features I am planning on implementing:
 
 <a href="http://mrhuffman.net/projects/gp">Click here</a>
 
+<h2>Install</h2>
+
+<code>npm install</code>
+
 <h2>Run</h2>
 
 <code>npm start</code>
