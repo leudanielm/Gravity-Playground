@@ -9,29 +9,6 @@ The algorithm that I developed for solving Newton's equations of motion and grav
 
 This is a living project and I will add features on a semi-regular basis (time permitting!) and if you have any ideas or would like to contribute, feel free to tug the sleeve of my shirt and we'll talk about it. The more the merrier :).
 
-Features I am planning on implementing:
-
-<ul>
-  <li>Collisions</li>
-  <li>A controllable spacecraft</li>
-  <li>The ability to construct a new scenario from scratch</li>
-  <li>Include information about all the masses and make it a kind of 3D interactive solar system wikipedia
-</ul>
-
-<h2>Demo</h2>
-
-<a href="http://mrhuffman.net/projects/gp">Click here</a>
-
-<h2>Install</h2>
-
-<code>npm install</code>
-
-<h2>Run</h2>
-
-<code>npm start</code>
-
-<h2>Build</h2>
-
-<code>npm run build</code>
+<h2><a href="http://mrhuffman.net/projects/gp">Demo</a></h2>
 
 
