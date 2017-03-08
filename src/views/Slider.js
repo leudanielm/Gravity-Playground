@@ -41,7 +41,7 @@ class Slider extends React.Component {
 
       <div className="sliderValue">{ this.state.val }</div>
 
-      <input className="slider" type="range" name={ this.props.name } max={ this.props.max } min={ this.props.min } step={ this.props.step } required={ true } onInput={ this.updateVal } />
+      <input className="slider" type="range" name={ this.props.name } max={ this.props.max } min={ this.props.min } step={ this.props.step } required={ true } onInput={ this.updateVal } value={ this.state.val } />
 
     </div>
 

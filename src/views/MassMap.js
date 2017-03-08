@@ -5,8 +5,9 @@ class MassMap extends React.Component {
 
   static propTypes = {
 
-    scenario: React.PropTypes.object.isRequired,
-    masses:  React.PropTypes.array.isRequired
+    timeStep: React.PropTypes.number.isRequired,
+    scale:  React.PropTypes.number.isRequired,
+    masses:  React.PropTypes.array.isRequired,
 
   }
 
@@ -23,10 +24,22 @@ class MassMap extends React.Component {
       let x = this.props.masses[ i ].x * this.props.scale;
       let y = this.props.masses[ i ].y * this.props.scale;
 
+      //Draw masses
+
       ctx.beginPath();
       ctx.arc( x, y, 5, 0, 2 * Math.PI );
       ctx.fillStyle = this.props.masses[ i ].color;
       ctx.fill();
+
+      //Draw velocity vectors
+
+      ctx.beginPath();
+      ctx.moveTo( x, y );
+      ctx.lineTo( x + (((this.props.masses[ i ].vx * this.props.timeStep) * this.props.scale) * 200), y + (((this.props.masses[ i ].vy * this.props.timeStep) * this.props.scale) * 200));
+      ctx.strokeStyle = 'red';
+      ctx.stroke();
+
+      //Draw names
 
       ctx.font = "14px Tahoma";
       ctx.fillText( this.props.masses[ i ].name, x + 10, y );

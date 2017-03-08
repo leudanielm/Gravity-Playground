@@ -5,29 +5,17 @@ import '../css/ModifyScenario.css';
 
 class ModifyScenario extends React.Component {
 
-  static propTypes = {
-
-    scenario: React.PropTypes.object.isRequired,
-    addBody: React.PropTypes.func.isRequired,
-    masses: React.PropTypes.array.isRequired,
-    colors: React.PropTypes.array.isRequired,
-    hideModifyScenario: React.PropTypes.func.isRequired
-
-  }
-
   render() {
 
     return (
 
-    <div className="modifyScenarioWrapper easeIn">
+    <div className="modifyScenarioWrapper">
 
-      <MassMap masses={ this.props.scenario.masses } scale={ this.props.scenario.scale } />
+      <MassMap masses={ this.props.scenario.masses } timeStep={ this.props.scenario.dt } scale={ this.props.scenario.scale } />
 
       <div className="addMassWrapper">
 
-        <h2 className="addMassTitle">Add Mass</h2>
-
-        <form onSubmit={ this.props.addBody } className="addMassForm">
+        <form className="addMassForm" onSubmit={ this.props.addBody }>
 
           <table className="addMassTable">
 

@@ -5,19 +5,6 @@ import '../css/SimulationInputs.css';
 
 class SimulationInputs extends React.Component {
 
-  static propTypes = {
-
-    scenario: React.PropTypes.object.isRequired,
-    addBody: React.PropTypes.func.isRequired,
-    masses: React.PropTypes.array.isRequired,
-    colors: React.PropTypes.array.isRequired,
-    updateScenario: React.PropTypes.func.isRequired,
-    showModifyScenario: React.PropTypes.func.isRequired,
-    hideModifyScenario: React.PropTypes.func.isRequired,
-    start: React.PropTypes.func.isRequired
-
-  }
-
   render() {
 
     return (
@@ -30,7 +17,21 @@ class SimulationInputs extends React.Component {
 
       <div className="inputsWrapper">
 
-       { this.props.modifyScenario === false ? <MainMenu updateScenario={ this.props.updateScenario } scenarios={ this.props.scenarios } scenario={ this.props.scenario } showModifyScenario={ this.props.showModifyScenario } start={ this.props.start } /> : <ModifyScenario scenario={ this.props.scenario } addBody={ this.props.addBody } masses={ this.props.masses } colors={ this.props.colors } hideModifyScenario={ this.props.hideModifyScenario } /> }
+      <div className="inputsWrapper">
+
+        <MainMenu updateScenario={ this.props.updateScenario } 
+                                                         scenarios={ this.props.scenarios } 
+                                                         scenario={ this.props.scenario } 
+                                                         showModifyScenario={ this.props.showModifyScenario } 
+                                                         start={ this.props.start } /> 
+
+                                             { this.props.modifyScenario === true && <ModifyScenario scenario={ this.props.scenario } 
+                                                               masses={ this.props.masses } 
+                                                               colors={ this.props.colors } 
+                                                               addBody={ this.props.addBody }
+                                                               hideModifyScenario={ this.props.hideModifyScenario } /> }
+
+      </div>
 
       </div>
 

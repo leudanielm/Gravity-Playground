@@ -1,55 +1,89 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import store from '../store';
 import SimulationInputs from '../views/SimulationInputs';
 import SceneWrapper from '../views/SceneWrapper';
 
 class SimulatorContainer extends React.Component {
 
-  constructor( props ) {
+  render() {
 
-    super( props );
+    return (
 
-    this.state = {
-      running: false,
-      scenarios: Object.keys( this.props.scenarios ),
-      scenario: this.props.scenarios[ 'The Earth and Moon System' ],
-      modifyScenario: false
-    };
+    <div className="pageWrapper">
 
+      { this.props.scene.running === false ? <SimulationInputs updateScenario={ this.props.updateScenario } 
+                                                         scenario={ this.props.scenarios.scenario } 
+                                                         scenarios={ this.props.scenarios.scenarios } 
+                                                         masses={ this.props.masses } 
+                                                         colors={ this.props.colors } 
+						         modifyScenario={ this.props.scenarios.modifyScenario }
+                                                         showModifyScenario={ this.props.showModifyScenario }
+                                                         hideModifyScenario={ this.props.hideModifyScenario }
+                                                         addBody={ this.props.addBody }
+                                                         start={ this.props.start } /> 
+
+                                            : <SceneWrapper scenario={ this.props.scenarios.scenario } 
+                                                            reset={ this.props.reset } /> }
+
+    </div>
+
+    );
   }
 
-  static propTypes = {
+}
 
-    scenarios: React.PropTypes.object.isRequired,
-    colors: React.PropTypes.array.isRequired,
-    masses: React.PropTypes.array.isRequired
+const mapStateToProps = ( state ) => ( {
+  scenarios: state.scenarioState,
+  scene: state.sceneState
+} );
 
-  }
+const mapDispatchToProps = ( dispatch, ownProps ) => ( {
 
-  updateScenario = ( e ) => {
+  updateScenario: ( e ) => {
 
-    this.setState( {
-      scenario: this.props.scenarios[ e.target.value ]
+    dispatch( {
+      type: 'setScenario',
+      selectedScenario: e.target.value 
     } );
 
-  }
+  },
 
-  showModifyScenario = () => {
+  showModifyScenario: () => {
 
-    this.setState( {
-      modifyScenario: true
+    dispatch( {
+      type: 'openModifyScenario'
     } );
 
-  }
+  },
 
-  hideModifyScenario = () => {
+  hideModifyScenario: () => {
 
-    this.setState( {
-      modifyScenario: false
+    dispatch( {
+      type: 'closeModifyScenario'
     } );
 
-  }
+  },
 
-  addBody = ( e ) => {
+  start: () => {
+
+    dispatch( {
+      type: 'setSimulation',
+      running: true
+    } );
+
+  },
+
+  reset: () => {
+
+    dispatch( {
+      type: 'setSimulation',
+      running: false
+    } );
+
+  },
+
+  addBody: ( e ) => {
 
     e.preventDefault();
 
@@ -79,47 +113,13 @@ class SimulatorContainer extends React.Component {
 
     e.target.reset();
 
-    //Update scenario state
-
-    const newScenario = this.state.scenario;
-    newScenario.masses.push( body );
-
-    this.setState( {
-      scenario: newScenario
+    store.dispatch( {
+      type: 'addMassToScenario',
+      mass: body
     } );
 
   }
 
-  start = () => {
+} );
 
-    this.setState( {
-      running: true
-    } );
-
-  }
-
-  reset = () => {
-
-    this.setState( {
-      running: false,
-      scenario: this.props.scenarios[ 'The Earth and Moon System' ]
-    } );
-
-  }
-
-  render() {
-
-    return (
-
-    <div className="pageWrapper">
-
-      { this.state.running === false ? <SimulationInputs modifyScenario={ this.state.modifyScenario } showModifyScenario={ this.showModifyScenario } hideModifyScenario={ this.hideModifyScenario } setBodyParam={ this.setBodyParam } addBody={ this.addBody } updateScenario={ this.updateScenario } scenario={ this.state.scenario } scenarios={ this.state.scenarios } masses={ this.props.masses } colors={ this.props.colors } start={ this.start } /> : <SceneWrapper scenario={ this.state.scenario } reset={ this.reset } /> }
-
-    </div>
-
-    );
-  }
-
-}
-
-export default SimulatorContainer;
+export default connect( mapStateToProps, mapDispatchToProps )( SimulatorContainer );

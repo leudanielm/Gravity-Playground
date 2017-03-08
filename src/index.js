@@ -1,12 +1,15 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
+import store from './store';
 import './css/main.css';
-import scenarios from './data/scenarios';
 import masses from './data/masses';
 import colors from './data/colors';
 import SimulatorContainer from './containers/SimulatorContainer';
 
 ReactDOM.render(
-  <SimulatorContainer scenarios={ scenarios } masses={ masses } colors={ colors } />,
+  <Provider store={ store }>
+    <SimulatorContainer colors={ colors } masses={ masses } />
+  </Provider>,
   document.getElementById( 'root' )
 );
