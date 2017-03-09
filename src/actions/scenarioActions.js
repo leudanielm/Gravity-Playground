@@ -1,23 +1,23 @@
 
 const setScenario = 'setScenario';
 
-export function setScenario( scenario ) {
+export function updateScenario( scenario ) {
 
-  return { type: setScenario, scenario };
+  return { type: setScenario, selectedScenario: scenario };
 
 };
 
 const addMassToScenario = 'addMassToScenario';
 
-export function addMassToScenario( mass ) {
+export function addBody( mass ) {
 
-  return { type: addMassToScenario, mass };
+  return { type: addMassToScenario, mass: mass };
 
 };
 
 const openModifyScenario = 'openModifyScenario';
 
-export function openModifyScenario() {
+export function showModifyScenario() {
 
   return { type: openModifyScenario };
 
@@ -25,7 +25,7 @@ export function openModifyScenario() {
 
 const closeModifyScenario = 'closeModifyScenario';
 
-export function closeModifyScenario() {
+export function hideModifyScenario() {
 
   return { type: closeModifyScenario };
 
