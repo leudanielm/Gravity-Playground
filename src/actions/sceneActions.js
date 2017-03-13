@@ -1,8 +1,8 @@
 
-const setSimulation = 'setSimulation';
+const SET_SIMULATION = 'SET_SIMULATION';
 
-export function setScene( running ) {
+export function setSimulation( running ) {
 
-  return { type: setSimulation, running: running };
+  return { type: SET_SIMULATION, running: running };
 
 };

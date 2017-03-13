@@ -1,32 +1,76 @@
 
-const setScenario = 'setScenario';
+//Change the selected scenario
 
-export function updateScenario( scenario ) {
+const SET_SCENARIO = 'SET_SCENARIO';
 
-  return { type: setScenario, selectedScenario: scenario };
+export function setScenario( scenario ) {
 
-};
-
-const addMassToScenario = 'addMassToScenario';
-
-export function addBody( mass ) {
-
-  return { type: addMassToScenario, mass: mass };
+  return { type: SET_SCENARIO, selectedScenario: scenario };
 
 };
 
-const openModifyScenario = 'openModifyScenario';
+//Add a mass to the selected scenario
 
-export function showModifyScenario() {
+const ADD_MASS_TO_SCENARIO = 'ADD_MASS_TO_SCENARIO';
 
-  return { type: openModifyScenario };
+export function addMassToScenario( mass ) {
+
+  return { type: ADD_MASS_TO_SCENARIO, mass: mass };
 
 };
 
-const closeModifyScenario = 'closeModifyScenario';
+export function addMass( e ) {
 
-export function hideModifyScenario() {
+  return function ( dispatch ) {
 
-  return { type: closeModifyScenario };
+    e.preventDefault();
+
+    //Get the form data, extract it and put it into an object literal
+
+    const form = new FormData( e.target );
+
+    const values = form.values();
+    const keys = form.keys();
+
+    const mass = {
+      type: 'custom',
+      radius: 1
+    };
+
+    let key;
+
+    while ( ( key = keys.next() ).done === false ) {
+
+      const value = values.next().value;
+
+      mass[ key.value ] = isNaN( value ) === false ? parseFloat( value ) : value;
+
+    }
+
+    //Reset the form
+
+    e.target.reset();
+
+    dispatch( addMassToScenario( mass ) );
+
+  };
+
+}
+
+//Open and close the modify scenario interface
+
+const OPEN_MODIFY_SCENARIO = 'OPEN_MODIFY_SCENARIO';
+
+export function openModifyScenario() {
+
+  return { type: OPEN_MODIFY_SCENARIO };
+
+};
+
+const CLOSE_MODIFY_SCENARIO = 'CLOSE_MODIFY_SCENARIO';
+
+export function closeModifyScenario() {
+
+  return { type: CLOSE_MODIFY_SCENARIO };
 
 };
