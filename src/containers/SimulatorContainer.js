@@ -15,21 +15,21 @@ class SimulatorContainer extends React.Component {
 
       { this.props.scene.running === false ? 
 
-        <SimulationInputs updateScenario={ this.props.updateScenario } 
+        <SimulationInputs setScenario={ this.props.setScenario } 
                           scenario={ this.props.scenarios.scenario } 
                           scenarios={ this.props.scenarios.scenarios } 
                           masses={ this.props.masses } 
                           colors={ this.props.colors } 
 			  modifyScenario={ this.props.scenarios.modifyScenario }
-                          showModifyScenario={ this.props.showModifyScenario }
-                          hideModifyScenario={ this.props.hideModifyScenario }
-                          addBody={ this.props.addBody }
-                          start={ this.props.start } /> 
+                          openModifyScenario={ this.props.openModifyScenario }
+                          closeModifyScenario={ this.props.closeModifyScenario }
+                          addMassToScenario={ this.props.addMassToScenario }
+                          startSimulation={ this.props.startSimulation } /> 
 
         :
       
         <SceneWrapper scenario={ this.props.scenarios.scenario } 
-                      reset={ this.props.reset } /> }
+                      resetSimulation={ this.props.resetSimulation } /> }
 
     </div>
 
@@ -45,67 +45,39 @@ const mapStateToProps = ( state ) => ( {
 
 const mapDispatchToProps = ( dispatch, ownProps ) => ( {
 
-  updateScenario: ( e ) => {
+  setScenario: ( e ) => {
 
-    dispatch( scenarioActions.updateScenario( e.target.value ) );
-
-  },
-
-  showModifyScenario: () => {
-
-    dispatch( scenarioActions.showModifyScenario() );
+    dispatch( scenarioActions.setScenario( e.target.value ) );
 
   },
 
-  hideModifyScenario: () => {
+  openModifyScenario: () => {
 
-    dispatch( scenarioActions.hideModifyScenario() );
-
-  },
-
-  start: () => {
-
-    dispatch( sceneActions.setScene( true ) );
+    dispatch( scenarioActions.openModifyScenario() );
 
   },
 
-  reset: () => {
+  closeModifyScenario: () => {
 
-    dispatch( sceneActions.setScene( false ) );
+    dispatch( scenarioActions.closeModifyScenario() );
 
   },
 
-  addBody: ( e ) => {
+  startSimulation: () => {
 
-    e.preventDefault();
+    dispatch( sceneActions.setSimulation( true ) );
 
-    //Get the form data, extract it and put it into an object literal
+  },
 
-    const form = new FormData( e.target );
+  resetSimulation: () => {
 
-    const values = form.values();
-    const keys = form.keys();
+    dispatch( sceneActions.setSimulation( false ) );
 
-    const body = {
-      type: 'custom',
-      radius: 1
-    };
+  },
 
-    let key;
+  addMassToScenario: ( e ) => {
 
-    while ( ( key = keys.next() ).done === false ) {
-
-      const value = values.next().value;
-
-      body[ key.value ] = isNaN( value ) === false ? parseFloat( value ) : value;
-
-    }
-
-    //Reset the form
-
-    e.target.reset();
-
-    dispatch( scenarioActions.addBody( body ) );
+    dispatch( scenarioActions.addMass( e ) );
 
   }
 
