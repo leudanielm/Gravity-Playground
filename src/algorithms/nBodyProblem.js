@@ -19,6 +19,10 @@ class nBodyProblem {
     this.y = 0;
     this.z = 0;
 
+    //Time elapsed in the simulation
+
+    this.elapsedTime = 0;
+
     //Fire init methods
 
     this.calculateSystemMass().calculateMuForAllMasses().leapfrog();
@@ -146,6 +150,14 @@ class nBodyProblem {
     this.x = x / systemMass;
     this.y = y / systemMass;
     this.z = z / systemMass;
+
+    return this;
+
+  }
+
+  calculateElapsedTime() {
+
+    this.elapsedTime += this.dt;
 
     return this;
 
