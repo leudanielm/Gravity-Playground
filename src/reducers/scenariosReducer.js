@@ -11,32 +11,24 @@ export default function( state = initialState, action ) {
 
   switch ( action.type ) {
 
-    case 'setScenario':
+    case 'SET_SCENARIO':
 
-      return Object.assign( {}, state, {
-        scenario: state.data[ action.selectedScenario ]
-      });
+      return Object.assign( {}, state, { scenario: state.data[ action.selectedScenario ] } );
 
-    case 'openModifyScenario':
+    case 'OPEN_MODIFY_SCENARIO':
 
-      return Object.assign( {}, state, {
-        modifyScenario: true
-      } );
+      return Object.assign( {}, state, { modifyScenario: true } );
 
-    case 'closeModifyScenario':
+    case 'CLOSE_MODIFY_SCENARIO':
 
-      return Object.assign( {}, state, {
-        modifyScenario: false
-      } );
+      return Object.assign( {}, state, { modifyScenario: false } );
 
-    case 'addMassToScenario':
+    case 'ADD_MASS_TO_SCENARIO':
 
       let newScenario = state.scenario;
       newScenario.masses = state.scenario.masses.push( action.mass );
 
-      return Object.assign( {}, state, {
-        scenario: newScenario
-      } );
+      return Object.assign( {}, state, { scenario: newScenario } );
 
     default:
 

@@ -6,7 +6,7 @@ export default function ( state = initialState, action ) {
 
   switch ( action.type ) {
 
-    case 'setSimulation':
+    case 'SET_SIMULATION':
 
       return Object.assign( {}, state, { running: action.running } );
 
