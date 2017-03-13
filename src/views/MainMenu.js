@@ -12,13 +12,15 @@ class MainMenu extends React.Component {
         <h1 className="pageTitle">Gravity Playground</h1>
 
         <label>Select a scenario</label>
-        <select onChange={ this.props.updateScenario } className="input scenariosList">{ this.props.scenarios.map( (scenario) => <option value={ scenario }> { scenario } </option> ) }</select>
+        <select onChange={ this.props.setScenario } className="input scenariosList">
+          { this.props.scenarios.map( (scenario) => <option value={ scenario }> { scenario } </option> ) }
+        </select>
 
         <ScenarioInfo scenario={ this.props.scenario } /> 
 
-        <button onClick={ this.props.showModifyScenario } className="input modifyScenarioButton">Modify Scenario</button>
+        <button onClick={ this.props.openModifyScenario } className="input modifyScenarioButton">Modify Scenario</button>
 
-        <button onClick={ this.props.start } className="input startButton">Start Simulation</button>
+        <button onClick={ this.props.startSimulation } className="input startButton">Start Simulation</button>
 
       </div>
 

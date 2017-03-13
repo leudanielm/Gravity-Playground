@@ -44,7 +44,7 @@ class SceneWrapper extends React.Component {
       <button ref={ (el) => this._viewOrbits = el } className="input viewOrbitsButton">View Orbits</button>
       <button ref={ (el) => this._view3D = el } className="input view3DButton">View 3D</button>
 
-      <button onClick={ this.props.reset } className="input resetButton">Reset</button>
+      <button onClick={ this.props.resetSimulation } className="input resetButton">Reset</button>
 
     </div>
 

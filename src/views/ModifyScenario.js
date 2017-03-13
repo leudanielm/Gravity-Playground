@@ -15,7 +15,7 @@ class ModifyScenario extends React.Component {
 
       <div className="addMassWrapper">
 
-        <form className="addMassForm" onSubmit={ this.props.addBody }>
+        <form className="addMassForm" onSubmit={ this.props.addMassToScenario }>
 
           <table className="addMassTable">
 
@@ -56,7 +56,7 @@ class ModifyScenario extends React.Component {
 
         <h1 className="scenarioTitle">{ this.props.scenario.name }</h1>
 
-        <span onClick={ this.props.hideModifyScenario } className="close">X</span>
+        <span onClick={ this.props.closeModifyScenario } className="close">X</span>
 
       </div>
 

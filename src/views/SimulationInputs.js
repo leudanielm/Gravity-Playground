@@ -19,17 +19,17 @@ class SimulationInputs extends React.Component {
 
       <div className="inputsWrapper">
 
-        <MainMenu updateScenario={ this.props.updateScenario } 
-                                                         scenarios={ this.props.scenarios } 
-                                                         scenario={ this.props.scenario } 
-                                                         showModifyScenario={ this.props.showModifyScenario } 
-                                                         start={ this.props.start } /> 
+        <MainMenu setScenario={ this.props.setScenario } 
+                  scenarios={ this.props.scenarios } 
+                  scenario={ this.props.scenario } 
+                  openModifyScenario={ this.props.openModifyScenario } 
+                  startSimulation={ this.props.startSimulation } /> 
 
-                                             { this.props.modifyScenario === true && <ModifyScenario scenario={ this.props.scenario } 
-                                                               masses={ this.props.masses } 
-                                                               colors={ this.props.colors } 
-                                                               addBody={ this.props.addBody }
-                                                               hideModifyScenario={ this.props.hideModifyScenario } /> }
+        { this.props.modifyScenario === true && <ModifyScenario scenario={ this.props.scenario } 
+                                                                masses={ this.props.masses } 
+                                                                colors={ this.props.colors } 
+                                                                addMassToScenario={ this.props.addMassToScenaario }
+                                                                closeModifyScenario={ this.props.closeModifyScenario } /> }
 
       </div>
 
