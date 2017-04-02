@@ -1,3 +1,4 @@
+import masses from '../data/masses';
 
 //Change the selected scenario
 
@@ -9,11 +10,27 @@ export function setScenario( scenario ) {
 
 };
 
+const SET_SCENARIO_LAW = 'SET_SCENARIO_LAW';
+
+export function setScenarioLaw( law ) {
+
+  return { type: SET_SCENARIO_LAW, law: law };
+
+}
+
+const SET_SCENARIO_G = 'SET_SCENARIO_G';
+
+export function setScenarioG( g ) {
+
+  return { type: SET_SCENARIO_G, g: g };
+
+}
+
 //Add a mass to the selected scenario
 
 const ADD_MASS_TO_SCENARIO = 'ADD_MASS_TO_SCENARIO';
 
-export function addMassToScenario( mass ) {
+function addMassToScenario( mass ) {
 
   return { type: ADD_MASS_TO_SCENARIO, mass: mass };
 
@@ -29,23 +46,24 @@ export function addMass( e ) {
 
     const form = new FormData( e.target );
 
-    const values = form.values();
-    const keys = form.keys();
+    const massName = form.get( 'm' );
+
+    let fixedMassData = masses.filter( ( mass ) => massName === mass.name );
 
     const mass = {
       type: 'custom',
-      radius: 1
+      name: form.get( 'name' ),
+      textureName: massName,
+      m: fixedMassData[0].m,
+      color: form.get( 'color' ),
+      x: parseFloat( form.get( 'x' ) ),
+      y: parseFloat( form.get( 'y' ) ),
+      z: parseFloat( form.get( 'z' ) ),
+      vx: parseFloat( form.get( 'vx' ) ),
+      vy: parseFloat( form.get( 'vy' ) ),
+      vz: parseFloat( form.get( 'vz' ) ),
+      radius: fixedMassData[0].radius
     };
-
-    let key;
-
-    while ( ( key = keys.next() ).done === false ) {
-
-      const value = values.next().value;
-
-      mass[ key.value ] = isNaN( value ) === false ? parseFloat( value ) : value;
-
-    }
 
     //Reset the form
 
@@ -55,7 +73,7 @@ export function addMass( e ) {
 
   };
 
-}
+};
 
 //Open and close the modify scenario interface
 
