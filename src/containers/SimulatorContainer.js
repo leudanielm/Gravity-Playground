@@ -2,10 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as scenarioActions from '../actions/scenarioActions';
 import * as sceneActions from '../actions/sceneActions';
-import SimulationInputs from '../views/SimulationInputs';
-import SceneWrapper from '../views/SceneWrapper';
+import store from '../store';
+import InputsGUI from '../views/InputsGUI/InputsGUI';
+import SceneGUI from '../views/SceneGUI/SceneGUI';
 
 class SimulatorContainer extends React.Component {
+
+  componentWillMount() {
+
+    store.dispatch( scenarioActions.setScenario( 'The Inner Solar System' ) );
+
+  }
 
   render() {
 
@@ -15,11 +22,11 @@ class SimulatorContainer extends React.Component {
 
       { this.props.scene.running === false ? 
 
-        <SimulationInputs setScenario={ this.props.setScenario } 
+        <InputsGUI setScenario={ this.props.setScenario } 
+                          setScenarioLaw={ this.props.setScenarioLaw }
+                          setScenarioG={ this.props.setScenarioG }
                           scenario={ this.props.scenarios.scenario } 
                           scenarios={ this.props.scenarios.scenarios } 
-                          masses={ this.props.masses } 
-                          colors={ this.props.colors } 
 			  modifyScenario={ this.props.scenarios.modifyScenario }
                           openModifyScenario={ this.props.openModifyScenario }
                           closeModifyScenario={ this.props.closeModifyScenario }
@@ -28,8 +35,13 @@ class SimulatorContainer extends React.Component {
 
         :
       
-        <SceneWrapper scenario={ this.props.scenarios.scenario } 
-                      resetSimulation={ this.props.resetSimulation } /> }
+        <SceneGUI scenario={ this.props.scenarios.scenario } 
+                      scene={ this.props.scene }
+                      resetSimulation={ this.props.resetSimulation }
+                      setCameraPosition={ this.props.setCameraPosition }
+                      setCameraFocus={ this.props.setCameraFocus }
+                      hideOrbits={ this.props.hideOrbits }
+                      showOrbits={ this.props.showOrbits } /> }
 
     </div>
 
@@ -48,6 +60,18 @@ const mapDispatchToProps = ( dispatch, ownProps ) => ( {
   setScenario: ( e ) => {
 
     dispatch( scenarioActions.setScenario( e.target.value ) );
+
+  },
+
+  setScenarioLaw: ( e ) => {
+
+    dispatch( scenarioActions.setScenarioLaw( parseFloat( e.target.value ) ) );
+
+  },
+
+  setScenarioG: ( e ) => {
+
+    dispatch( scenarioActions.setScenarioG( parseFloat( e.target.value ) ) );
 
   },
 
@@ -72,6 +96,30 @@ const mapDispatchToProps = ( dispatch, ownProps ) => ( {
   resetSimulation: () => {
 
     dispatch( sceneActions.setSimulation( false ) );
+
+  },
+
+  showOrbits: () => {
+
+    dispatch( sceneActions.setOrbits( true ) );
+
+  },
+
+  hideOrbits: () => {
+
+    dispatch( sceneActions.setOrbits( false ) );
+
+  },
+
+  setCameraPosition: ( e ) => {
+
+    dispatch( sceneActions.setCameraPosition( e.target.value ) );
+
+  },
+
+  setCameraFocus: ( e ) => {
+
+    dispatch( sceneActions.setCameraFocus( e.target.value ) );
 
   },
 
