@@ -66,6 +66,8 @@ const scene = (function() {
 
   function init(scenario, webGlCanvas, massCanvas, pathCanvas) {
 
+    //Set initial camera position and focus
+
     store.dispatch( sceneActions.setCameraPosition( scenario.masses[0].name ) );
 
     store.dispatch( sceneActions.setCameraFocus( scenario.masses[0].name ) );
@@ -147,8 +149,12 @@ const scene = (function() {
 
         mass.manifestation.position.set(x, y, z);
 
-        let camR = store.getState().sceneState.cameraPosition;
-        let camF = store.getState().sceneState.cameraFocus;
+        //Get camera position and focus from the store
+
+        let sceneState = store.getState().sceneState;
+
+        let camR = sceneState.cameraPosition;
+        let camF = sceneState.cameraFocus;
         let name = mass.name;
 
         if (camR === name) {
