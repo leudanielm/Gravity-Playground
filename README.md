@@ -11,12 +11,5 @@ This is a living project and I will add features on a semi-regular basis (time p
 
 <h2><a href="http://mrhuffman.net/projects/gp">Demo</a></h2>
 
-<h2>To do</h2>
-
-- Refactor the scene and the react component that handles it 
-- Add collisions
-- Ability to create a scenario from scratch
-- Whatever awesome ideas you may want to share and see featured :)
-
 
 
