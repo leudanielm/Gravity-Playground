@@ -4,13 +4,13 @@ import * as scenarioActions from '../actions/scenarioActions';
 import * as inputsGuiActions from '../actions/inputsGuiActions';
 import * as sceneActions from '../actions/sceneActions';
 import store from '../store';
-import InputsGUI from '../views/InputsGUI/InputsGUI';
+import ModifyScenario from '../views/inputsGUI/ModifyScenario';
 
 class SceneInputsGuiContainer extends React.Component {
 
   componentWillMount() {
 
-    store.dispatch( scenarioActions.setScenario( 'The Inner Solar System' ) );
+    store.dispatch( scenarioActions.resetScenarioSettings() );
 
   }
 
@@ -18,7 +18,7 @@ class SceneInputsGuiContainer extends React.Component {
 
     return (
 
-        <InputsGUI setScenario={ this.props.setScenario } 
+        <ModifyScenario   setScenario={ this.props.setScenario } 
                           setScenarioLaw={ this.props.setScenarioLaw }
                           setScenarioG={ this.props.setScenarioG }
                           scenario={ this.props.scenarios.scenario } 
@@ -32,6 +32,7 @@ class SceneInputsGuiContainer extends React.Component {
                           startSimulation={ this.props.startSimulation } /> 
 
     );
+
   }
 
 }
