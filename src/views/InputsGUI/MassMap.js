@@ -48,7 +48,7 @@ class MassMap extends React.Component {
 
   }
 
-  componentWillReceiveProps() {
+  componentDidUpdate() {
 
     this.renderMap();
 
