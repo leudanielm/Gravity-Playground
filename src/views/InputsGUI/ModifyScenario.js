@@ -1,9 +1,13 @@
 import React from 'react';
 import MassMap from './MassMap';
 import Select from '../widgets/Select';
+import Tooltip from '../widgets/Tooltip';
 import Slider from '../widgets/Slider';
 import masses from '../../data/masses';
 import colors from '../../data/colors';
+import '../../css/SimulationInputs.css';
+import forceLaws from '../../data/forceLaws';
+import gravitationalConstants from '../../data/gravitationalConstants';
 import '../../css/ModifyScenario.css';
 
 const ModifyScenario = ( props ) => <div className="modifyScenarioWrapper">
@@ -15,6 +19,8 @@ const ModifyScenario = ( props ) => <div className="modifyScenarioWrapper">
                                                scale={ props.scenario.scale } />
 
                                       <div className="addMassWrapper">
+
+				      <h3>Add Mass</h3>
 
                                       <form className="addMassForm" 
                                             onSubmit={ props.addMassToScenario }>
@@ -99,21 +105,38 @@ const ModifyScenario = ( props ) => <div className="modifyScenarioWrapper">
 
                                     <div className="modifyScenarioHeader">
 
-                                      <h1 className="scenarioTitle">{ props.scenario.name }</h1>
+                                      <h3 className="scenarioLabel">Scenario</h3>
+                                                   
+                                      <Select callback={ props.setScenario } cssClass='input scenariosList' data={ props.scenarios } />
 
-                                      <span onClick={ props.closeModifyScenario } 
-                                            className="close">
-                                        X
-                                      </span>
+                                      <Tooltip content="Select the scenario you want to simulate." />
+
+                                      <button onClick={ props.startSimulation } className="input startButton">Start Simulation</button>
+
+				      <h3 className="logo">Gravity Playground</h3>
 
                                     </div>
 
                                     <div className="deleteMassWrapper">
 
-				      <h2>Delete Mass</h2>
+				      <h3>Delete Mass</h3>
 
                                       <Select data={ props.scenario.masses } valueKey='name' labelKey='name' cssClass='input' callback={ props.setMassToBeDeleted } />
                                       <button onClick={ props.deleteMassFromScenario } className="input">Delete Mass</button>
+
+                                    </div>
+
+                                    <div className="setConstantsWrapper">
+
+				      <h3>Set Constants</h3>
+				 
+                                      <label>Gravitational Constant</label>
+
+                                      <Select callback={ props.setScenarioG } cssClass='input' data={ gravitationalConstants } valueKey='val' labelKey='name' />
+
+                                      <label>Gravitational Force Law</label>
+
+                                      <Select callback={ props.setScenarioLaw } cssClass='input' data={ forceLaws } valueKey='val' labelKey='name' />
 
                                     </div>
 
