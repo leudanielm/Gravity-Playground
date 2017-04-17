@@ -9,23 +9,46 @@
     background-color: rgb(0, 0, 51, 0.4);
 }
 
-.inputs {
-    width: 50%;
+.inputsTable {
+  display: 'block';
+  width: 100%;
+  background-color: rgb(0, 0, 0, 0.75);
+  border-bottom: 1px solid #d8d8d8;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.inputsTable th{
+  font-size: 11px;
+  text-align: left;
+  padding-left: 5px;
+  padding-top: 2px;
+  font-weight: normal;
+}
+
+.inputsTable td{
+  padding: 5px;
+}
+
+.modifyScenarioButton {
+  width: 100%;
+}
+
+.titleWrapper {
+    width: 100%;
+    text-align: center;
     position: absolute;
     top: 50%;
-    left: 25%;
     transform: translateY(-50%);
-    padding: 25px;
 }
 
-.pageTitle {
+.titleWrapper h1 {
     font-family: 'Days One', sans-serif;
-    text-align: center;
 }
 
-.scenariosList, .modifyScenarioButton, .startButton {
-    width: 100%;
-    margin-bottom: 10px;
+.titleWrapper h2 {
+    font-style: italic;
+    font-weight: normal;
 }
 
 @keyframes move-twink-back {

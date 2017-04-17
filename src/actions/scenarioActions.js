@@ -22,9 +22,31 @@ const SET_SCENARIO_G = 'SET_SCENARIO_G';
 
 export function setScenarioG( g ) {
 
+  alert(typeof setScenarioLaw);
+
   return { type: SET_SCENARIO_G, g: g };
 
 }
+
+//Set the mass to be deleted 
+
+const SET_MASS_TO_BE_DELETED = 'SET_MASS_TO_BE_DELETED';
+
+export function setMassToBeDeleted( mass ) {
+
+  return { type: SET_MASS_TO_BE_DELETED, massToBeDeleted: mass };
+
+}
+
+//Delete a mass from the selected scenario
+
+const DELTE_MASS_FROM_SCENARIO = 'DELETE_MASS_FROM_SCENARIO';
+
+export function deleteMass() {
+
+  return { type: DELTE_MASS_FROM_SCENARIO };
+
+};
 
 //Add a mass to the selected scenario
 
@@ -75,20 +97,12 @@ export function addMass( e ) {
 
 };
 
-//Open and close the modify scenario interface
+export function resetScenarioSettings() {
 
-const OPEN_MODIFY_SCENARIO = 'OPEN_MODIFY_SCENARIO';
+  return function ( dispatch ) {
 
-export function openModifyScenario() {
 
-  return { type: OPEN_MODIFY_SCENARIO };
 
-};
+  };
 
-const CLOSE_MODIFY_SCENARIO = 'CLOSE_MODIFY_SCENARIO';
-
-export function closeModifyScenario() {
-
-  return { type: CLOSE_MODIFY_SCENARIO };
-
-};
+}

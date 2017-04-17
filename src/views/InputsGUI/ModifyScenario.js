@@ -33,7 +33,7 @@ const ModifyScenario = ( props ) => <div className="modifyScenarioWrapper">
                                                      className="input" />
                                             </td>
                                             <td>
-                                              <Select data={ masses } valueKey='name' labelKey='name' cssClass='input' name='mass' />
+                                              <Select data={ masses } valueKey='name' labelKey='name' cssClass='input' name='m' />
                                             </td>
                                             <td>
                                               <Select data={ colors } cssClass='input' name='color' />
@@ -105,6 +105,15 @@ const ModifyScenario = ( props ) => <div className="modifyScenarioWrapper">
                                             className="close">
                                         X
                                       </span>
+
+                                    </div>
+
+                                    <div className="deleteMassWrapper">
+
+				      <h2>Delete Mass</h2>
+
+                                      <Select data={ props.scenario.masses } valueKey='name' labelKey='name' cssClass='input' callback={ props.setMassToBeDeleted } />
+                                      <button onClick={ props.deleteMassFromScenario } className="input">Delete Mass</button>
 
                                     </div>
 

@@ -7,7 +7,7 @@ class MassMap extends React.Component {
 
     timeStep: React.PropTypes.number.isRequired,
     scale:  React.PropTypes.number.isRequired,
-    masses:  React.PropTypes.array.isRequired,
+    masses:  React.PropTypes.array.isRequired
 
   }
 

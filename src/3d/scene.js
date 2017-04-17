@@ -66,12 +66,6 @@ const scene = (function() {
 
   function init(scenario, webGlCanvas, massCanvas, pathCanvas) {
 
-    //Set initial camera position and focus
-
-    store.dispatch( sceneActions.setCameraPosition( scenario.masses[0].name ) );
-
-    store.dispatch( sceneActions.setCameraFocus( scenario.masses[0].name ) );
-
     let ctxPath = pathCanvas.getContext('2d');
     let ctxMass = massCanvas.getContext('2d');
 

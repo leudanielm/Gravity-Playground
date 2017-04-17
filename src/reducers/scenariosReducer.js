@@ -4,10 +4,12 @@ const initialState = {
   data: scenarios,
   scenarios: Object.keys( scenarios ),
   scenario: scenarios[ 'The Inner Solar System' ],
-  modifyScenario: false
+  massToBeDeleted: null
 };
 
 export default function( state = initialState, action ) {
+
+  let newScenario = state.scenario;
 
   switch ( action.type ) {
 
@@ -27,18 +29,21 @@ export default function( state = initialState, action ) {
 
       return Object.assign( {}, state, { scenario: state.scenario } );
 
-    case 'OPEN_MODIFY_SCENARIO':
+    case 'SET_MASS_TO_BE_DELETED':
 
-      return Object.assign( {}, state, { modifyScenario: true } );
+      return Object.assign( {}, state, { massToBeDeleted: action.massToBeDeleted } );
 
-    case 'CLOSE_MODIFY_SCENARIO':
+    case 'DELETE_MASS_FROM_SCENARIO':
 
-      return Object.assign( {}, state, { modifyScenario: false } );
+      var bob = newScenario.masses.filter( ( mass ) => mass.name !== state.massToBeDeleted );
+
+      newScenario.masses = bob;
+
+      return Object.assign( {}, state, { scenario: newScenario } );
 
     case 'ADD_MASS_TO_SCENARIO':
 
-      let newScenario = state.scenario;
-      newScenario.masses = newScenario.masses.push( action.mass );
+      newScenario.masses.push( action.mass );
 
       return Object.assign( {}, state, { scenario: newScenario } );
 

@@ -12,10 +12,11 @@ body {
 }
 
 .input {
-  padding: 8px;
+  padding: 4px;
   background-color: #000;
   border: 1px solid #d8d8d8;
   color: #fff;
+  font-size: 11px;
 }
 
 button.input {

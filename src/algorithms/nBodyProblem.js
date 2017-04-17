@@ -1,8 +1,6 @@
-
-
 class nBodyProblem {
 
-  constructor( parameters ) {
+  constructor(parameters) {
 
     //Remember to be consistent in your use of units!!! 
 
@@ -35,7 +33,7 @@ class nBodyProblem {
 
     let massesLength = this.masses.length;
 
-    for (let i = 0; i < massesLength; i++) this.systemMass += this.masses[ i ].m;
+    for (let i = 0; i < massesLength; i++) this.systemMass += this.masses[i].m;
 
     return this;
 
@@ -47,7 +45,7 @@ class nBodyProblem {
 
     let massesLength = this.masses.length;
 
-    for (let i = 0; i < massesLength; i++) this.masses[ i ].mu = this.g * this.masses[ i ].m;
+    for (let i = 0; i < massesLength; i++) this.masses[i].mu = this.g * this.masses[i].m;
 
     return this;
   }
@@ -69,7 +67,7 @@ class nBodyProblem {
 
     for (let i = 0; i < massesLength; i++) {
 
-      let mass_i = this.masses[ i ];
+      let mass_i = this.masses[i];
 
       mass_i.x += mass_i.vx * this.dt;
       mass_i.y += mass_i.vy * this.dt;
@@ -91,15 +89,15 @@ class nBodyProblem {
       let ay = 0;
       let az = 0;
 
-      let mass_i = this.masses[ i ];
+      let mass_i = this.masses[i];
 
       for (let j = 0; j < massesLength; j++) {
 
-	//Don't calculate self-gravity or the system will go poooooooooof
+        //Don't calculate self-gravity or the system will go poooooooooof
 
-        if ( i !== j ) {
+        if (i !== j) {
 
-          let mass_j = this.masses[ j ];
+          let mass_j = this.masses[j];
 
           let dx = mass_j.x - mass_i.x;
           let dy = mass_j.y - mass_i.y;
@@ -107,7 +105,7 @@ class nBodyProblem {
 
           let distsq = dx * dx + dy * dy + dz * dz;
 
-          let fact = mass_j.mu / Math.pow( distsq, this.law );
+          let fact = mass_j.mu / Math.pow(distsq, this.law);
 
           ax += dx * fact;
           ay += dy * fact;
@@ -138,7 +136,7 @@ class nBodyProblem {
 
     for (let i = 0; i < massesLength; i++) {
 
-      let mass_i = this.masses[ i ];
+      let mass_i = this.masses[i];
       let m = mass_i.m;
 
       x += mass_i.x * m;

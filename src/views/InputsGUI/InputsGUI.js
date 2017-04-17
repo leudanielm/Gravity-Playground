@@ -33,10 +33,10 @@ const InputsGUI = ( props ) => <div>
                                                   <Select callback={ props.setScenarioLaw } cssClass='input' data={ forceLaws } valueKey='val' labelKey='name' />
                                                 </td>
                                                 <td>
-                                                  <Select callback={ props.setScenarioG } cssClass='input' data={ gravitationalConstants } valueKey='val' labelKey='val' />
+                                                  <Select callback={ props.setScenarioG } cssClass='input' data={ gravitationalConstants } valueKey='val' labelKey='name' />
                                                 </td>
                                                 <td>
-                                                  <button onClick={ props.openModifyScenario } className="input modifyScenarioButton">Add Mass</button>
+                                                  <button onClick={ props.openModifyScenario } className="input modifyScenarioButton">Manage Masses</button>
                                                 </td>
                                                 <td>
                                                   <button onClick={ props.startSimulation } className="input startButton">Start Simulation</button>
@@ -52,11 +52,10 @@ const InputsGUI = ( props ) => <div>
 
                                           { props.modifyScenario === true && 
 
-                                             <ModifyScenario scenario={ props.scenario } addMassToScenario={ props.addMassToScenario } closeModifyScenario={ props.closeModifyScenario } /> }
+                                             <ModifyScenario setMassToBeDeleted={ props.setMassToBeDeleted } deleteMassFromScenario={ props.deleteMassFromScenario } scenario={ props.scenario } addMassToScenario={ props.addMassToScenario } closeModifyScenario={ props.closeModifyScenario } /> }
 
                                         </div>
 
                                       </div>;
-
 
 export default InputsGUI;
