@@ -22,8 +22,6 @@ const SET_SCENARIO_G = 'SET_SCENARIO_G';
 
 export function setScenarioG( g ) {
 
-  alert(typeof setScenarioLaw);
-
   return { type: SET_SCENARIO_G, g: g };
 
 }
@@ -101,7 +99,9 @@ export function resetScenarioSettings() {
 
   return function ( dispatch ) {
 
-
+    dispatch( setScenario( 'The Inner Solar System' ) );
+    dispatch( setScenarioG( 39.5 ) );
+    dispatch( setScenarioLaw( 1.5 ) );
 
   };
 
